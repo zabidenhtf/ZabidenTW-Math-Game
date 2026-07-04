@@ -1,2 +1,10 @@
+ifeq ($(OS),Windows_NT)
+	CFLAGS = -ffunction-sections -fdata-sections -Os -static -static-libgcc -static-libstdc++
+	OUT = ./bin/Release/zabimg.exe
+else
+	CFLAGS = -ffunction-sections -fdata-sections -Os
+	OUT = ./bin/Release/zabimg
+endif
+
 all:
-	g++ main.cpp -ffunction-sections -fdata-sections -static -static-libgcc -static-libstdc++ -Os -o ./bin/Release/zabimg
+	g++ main.cpp $(CFLAGS) -o $(OUT)
