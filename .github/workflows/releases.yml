@@ -1,0 +1,35 @@
+name: Release Build
+
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macos-latest
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create directories
+        shell: bash
+        run: mkdir -p bin/Release
+
+      - name: Build
+        run: make
+
+      - name: Upload Release Files
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            bin/Release/zabimg*
+            LICENSE
+            README.md
