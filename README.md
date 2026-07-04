@@ -7,10 +7,7 @@ ZabidenTW Math Game is very simple game writen in 1 hour where you have to solve
 ## Building
 To build this program you have to install
 * G++
-* Make or Code::Blocks
-### Code::blocks
-You just have to open project file, and compile it using button
-### Make
+* Make
 You just have to write in terminal or cmd
 `make`
 ## TODO

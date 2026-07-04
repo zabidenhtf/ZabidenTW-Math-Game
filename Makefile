@@ -7,4 +7,4 @@ else
 endif
 
 all:
-	g++ main.cpp $(CFLAGS) -o $(OUT)
+	g++ src/Main.cpp $(CFLAGS) -o $(OUT)
