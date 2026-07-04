@@ -8,7 +8,7 @@
 
 extern BestScore Scores[8];
 extern CGameCore GameCore;
-
+constexpr char CurrentVersion[12] = "1.1.0-trunk";
 int CMainMenu::Run(){
         printf("ZabiDenTW Math Game\n");
         printf("------------------------------------\n");
@@ -32,7 +32,7 @@ int CMainMenu::Run(){
             printf("|------------------------------------------------------------|\n");
             printf("|This program made by Mykyta Polishyk also known as ZABIDENTW|\n");
             printf("|And this program licensed under MIT license                 |\n");
-            printf("|Current version: 1.1.0-trunk                                |\n");
+            printf("|Current version: %-11s                                |\n", CurrentVersion);
             printf("|------------------------------------------------------------|\n");
             return 1;
         case 3:

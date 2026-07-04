@@ -16,10 +16,7 @@ BestScore Scores[8];
 CMainMenu MainMenu;
 CGameCore GameCore;
 
-void InitializateScores(){
-	for (int i = 0; i < 8; i++){
-	}
-}
+constexpr char CurrentVersion[12] = "1.1.0";
 
 int main()
 {
