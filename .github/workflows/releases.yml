@@ -4,7 +4,7 @@ on:
   release:
     types:
       - published
-      
+
 permissions:
   contents: write
 
@@ -12,27 +12,63 @@ jobs:
   build:
     strategy:
       matrix:
-        os:
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
+        include:
+          - os: windows-latest
+            archive: zip
+            artifact: 1.0.0-windows.zip
+
+          - os: ubuntu-latest
+            archive: tar.gz
+            artifact: 1.0.0-linux.tar.gz
+
+          - os: macos-latest
+            archive: tar.gz
+            artifact: 1.0.0-macos.tar.gz
 
     runs-on: ${{ matrix.os }}
 
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup MSYS2
+        if: runner.os == 'Windows'
+        uses: msys2/setup-msys2@v2
+        with:
+          install: make mingw-w64-x86_64-gcc
+
       - name: Create directories
         shell: bash
-        run: mkdir -p bin/Release
+        run: mkdir -p bin/Release package
 
       - name: Build
         run: make
 
-      - name: Upload Release Files
+      - name: Prepare package
+        shell: bash
+        run: |
+          cp LICENSE package/
+          cp README.md package/
+
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            cp bin/Release/zabimg.exe package/
+          else
+            cp bin/Release/zabimg package/
+          fi
+
+      - name: Create ZIP archive
+        if: matrix.archive == 'zip'
+        shell: bash
+        run: |
+          cd package
+          7z a ../${{ matrix.artifact }} *
+
+      - name: Create TAR.GZ archive
+        if: matrix.archive == 'tar.gz'
+        shell: bash
+        run: |
+          tar -czf ${{ matrix.artifact }} -C package .
+
+      - name: Upload Release Archive
         uses: softprops/action-gh-release@v2
         with:
-          files: |
-            bin/Release/zabimg*
-            LICENSE
-            README.md
+          files: ${{ matrix.artifact }}
