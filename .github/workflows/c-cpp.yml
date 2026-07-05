@@ -16,10 +16,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: create directories
-      shell: bash
-      run: mkdir -p bin/Release
-    
     - name: make
       run: make
     

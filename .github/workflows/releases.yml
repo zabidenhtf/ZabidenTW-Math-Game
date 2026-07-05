@@ -36,10 +36,6 @@ jobs:
         with:
           install: make mingw-w64-x86_64-gcc
 
-      - name: Create directories
-        shell: bash
-        run: mkdir -p bin/Release package
-
       - name: Build
         run: make
 
@@ -50,9 +46,9 @@ jobs:
           cp README.md package/
 
           if [ "$RUNNER_OS" = "Windows" ]; then
-            cp bin/Release/zabimg.exe package/
+            cp bin/zabimg.exe package/
           else
-            cp bin/Release/zabimg package/
+            cp bin/zabimg package/
           fi
 
       - name: Create ZIP archive
