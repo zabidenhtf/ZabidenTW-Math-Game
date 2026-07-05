@@ -10,18 +10,19 @@ extern BestScore Scores[8];
 extern CGameCore GameCore;
 constexpr char CurrentVersion[12] = "1.1.0-trunk";
 int CMainMenu::Run(){
-        printf("ZabiDenTW Math Game\n");
-        printf("------------------------------------\n");
-        printf("1.) Play; 2.) About; 3.) Best scores;\n");
-        printf("4.) Exit\n");
-        printf("------------------------------------\n");
+        printf("|-------------------------------------|\n");
+        printf("|        -=ZabidenTW Math Game=-      |\n");
+        printf("|-------------------------------------|\n");
+        printf("|1.) Play; 2.) About; 3.) Best scores;|\n");
+        printf("|4.) Exit                             |\n");
+        printf("|-------------------------------------|\n\n");
         printf("Your option:");
         scanf("%d", &Selector);
         switch(Selector){
         default:
-            printf("|------------------------------\n");
-            printf("|This option didn't exist\n");
-            printf("|------------------------------\n");
+            printf("|------------------------------|\n");
+            printf("|   This option didn't exist   |\n");
+            printf("|------------------------------|\n");
             return 1;
         case 1:
             GameCore.Run();
@@ -51,8 +52,10 @@ int CMainMenu::Run(){
             printf("|------------------------------------------------------|\n");
             return 1;
         case 4:
-            printf("Are you sure to quit? All of your progress will reset (Y/N)\n");
-            printf("------------------------------------\n");
+            printf("|-----------------------------------------------------------|\n");
+            printf("|Are you sure to quit? All of your progress will reset (Y/N)|\n");
+            printf("|-----------------------------------------------------------|\n");
+            printf("Your option:");
             scanf(" %c", &QuitSelector);
             if (QuitSelector == 'Y' || QuitSelector == 'y'){
                 return 0;

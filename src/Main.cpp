@@ -3,7 +3,7 @@
 /* See the LICENSE file for details. */
 #include <time.h>
 #include <stdlib.h>
-// TODO: Add modern C++ libraries
+// TODO: Start using modern C++ libraries
 
 #include "MainMenu.hpp"
 #include "Types.hpp"
@@ -15,8 +15,6 @@ BestScore Scores[8];
 
 CMainMenu MainMenu;
 CGameCore GameCore;
-
-constexpr char CurrentVersion[12] = "1.1.0";
 
 int main()
 {
