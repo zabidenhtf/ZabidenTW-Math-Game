@@ -13,6 +13,12 @@ extern SaveFile CurrentSave;
 extern void SaveSaveFile();
 
 void CGameCore::Run(){
+    MaxNumber = 10;
+    CurrentRound = 1;
+    TypeCounter = 0;
+    Type = false;
+    Lives = 5;
+    Score = 0;
     struct timespec start, end;
     while (Lives > 0){
         if (TypeCounter == 3){
