@@ -15,15 +15,15 @@ jobs:
         include:
           - os: windows-latest
             archive: zip
-            artifact: 1.0.0-windows.zip
+            artifact: 1.1.0-windows.zip
 
           - os: ubuntu-latest
             archive: tar.gz
-            artifact: 1.0.0-linux.tar.gz
+            artifact: 1.1.0-linux.tar.gz
 
           - os: macos-latest
             archive: tar.gz
-            artifact: 1.0.0-macos.tar.gz
+            artifact: 1.1.0-macos.tar.gz
 
     runs-on: ${{ matrix.os }}
 

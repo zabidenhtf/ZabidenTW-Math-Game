@@ -10,7 +10,7 @@ extern SaveFile CurrentSave;
 extern CGameCore GameCore;
 extern void LoadSaveFile();
 
-constexpr char CurrentVersion[12] = "1.1.0-trunk";
+constexpr char CurrentVersion[12] = "1.1.0";
 int CMainMenu::Run(){
         LoadSaveFile();
         printf("|-------------------------------------|\n");

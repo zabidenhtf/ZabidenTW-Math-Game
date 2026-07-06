@@ -1,9 +1,10 @@
 # ZabidenTW Math Game - Explore console math world! (Yes, very epic for simple console app in 200 lines)
 ## Description
-ZabidenTW Math Game is very simple game writen in 1 hour where you have to solve math problems to get bigger score.
+ZabidenTW Math Game is very simple game writen initialy in 1 hour where you have to solve math problems to get bigger score.
 ## Fully-Featured
 * Working leaderboards
 * Very fun gameplay
+* Good looking console UI
 ## Building
 To build this program you have to install
 * G++
