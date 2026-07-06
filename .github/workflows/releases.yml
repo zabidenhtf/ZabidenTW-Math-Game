@@ -42,6 +42,7 @@ jobs:
       - name: Prepare package
         shell: bash
         run: |
+          mkdir -p package
           cp LICENSE package/
           cp README.md package/
 
