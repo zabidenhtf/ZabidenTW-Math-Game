@@ -55,9 +55,9 @@ int CMainMenu::Run(){
             printf("|------------------------------------------------------|\n");
             return 1;
         case 4:
-            printf("|-----------------------------------------------------------|\n");
-            printf("|Are you sure to quit? All of your progress will reset (Y/N)|\n");
-            printf("|-----------------------------------------------------------|\n");
+            printf("|--------------------------|\n");
+            printf("|Are you sure to quit?(Y/N)|\n");
+            printf("|--------------------------|\n");
             printf("Your option:");
             scanf(" %c", &QuitSelector);
             if (QuitSelector == 'Y' || QuitSelector == 'y'){
