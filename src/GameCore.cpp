@@ -9,7 +9,8 @@
 #include "GameCore.hpp"
 #include "Types.hpp"
 
-extern BestScore Scores[8];
+extern SaveFile CurrentSave;
+extern void SaveSaveFile();
 
 void CGameCore::Run(){
     struct timespec start, end;
@@ -63,20 +64,21 @@ void CGameCore::Run(){
     char PlayersName[32];
     printf("Write your name\n");
     scanf("%s", &PlayersName);
-    if (Score > Scores[7].Score) {
-        strcpy(Scores[7].Name, PlayersName);
-        Scores[7].Score = Score;
-        Scores[7].Round = CurrentRound - 1;
+    if (Score > CurrentSave.Scores[7].Score) {
+        strcpy(CurrentSave.Scores[7].Name, PlayersName);
+        CurrentSave.Scores[7].Score = Score;
+        CurrentSave.Scores[7].Round = CurrentRound - 1;
     }
 
     for (int i = 0; i < 8 - 1; i++) {
         for (int j = 0; j < 8 - i - 1; j++) {
-            if (Scores[j].Score < Scores[j + 1].Score) {
-                struct BestScore temp = Scores[j];
-                Scores[j] = Scores[j + 1];
-                Scores[j + 1] = temp;
+            if (CurrentSave.Scores[j].Score < CurrentSave.Scores[j + 1].Score) {
+                struct BestScore temp = CurrentSave.Scores[j];
+                CurrentSave.Scores[j] = CurrentSave.Scores[j + 1];
+                CurrentSave.Scores[j + 1] = temp;
             }
         }
     }
     printf("Score saved!\n");
+    SaveSaveFile();
 }

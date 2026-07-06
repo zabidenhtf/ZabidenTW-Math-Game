@@ -6,10 +6,13 @@
 #include "Types.hpp"
 #include <stdio.h>
 
-extern BestScore Scores[8];
+extern SaveFile CurrentSave;
 extern CGameCore GameCore;
+extern void LoadSaveFile();
+
 constexpr char CurrentVersion[12] = "1.1.0-trunk";
 int CMainMenu::Run(){
+        LoadSaveFile();
         printf("|-------------------------------------|\n");
         printf("|        -=ZabidenTW Math Game=-      |\n");
         printf("|-------------------------------------|\n");
@@ -45,9 +48,9 @@ int CMainMenu::Run(){
             for (int i = 0; i < 8; i++){
                 printf("| %-5d | %-24s | %-7d | %-7d |\n",
                        i + 1,
-                       Scores[i].Name,
-                       Scores[i].Score,
-                       Scores[i].Round);
+                       CurrentSave.Scores[i].Name,
+                       CurrentSave.Scores[i].Score,
+                       CurrentSave.Scores[i].Round);
             }
             printf("|------------------------------------------------------|\n");
             return 1;

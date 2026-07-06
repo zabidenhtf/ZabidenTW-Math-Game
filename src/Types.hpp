@@ -8,3 +8,7 @@ struct BestScore{
     int Score;
     int Round;
 };
+
+struct SaveFile{
+	BestScore Scores[8];
+};
